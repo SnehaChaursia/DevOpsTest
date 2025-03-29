@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git clone 'https://github.com/SnehaChaursia/DevOpsTest.git'
+                git 'https://github.com/SnehaChaursia/DevOpsTest.git'
             }
         }
         stage('Install Dependencies') {
