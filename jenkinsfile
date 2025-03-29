@@ -4,11 +4,11 @@ pipeline {
         nodejs 'NodeJS' 
     }
    stages {
-       // stage('Clone Repository') {
-        //    steps {
-        //        git 'https://github.com/SnehaChaursia/DevOpsTest.git'
-         //   }
-     //   }
+        stage('Clone Repository') {
+           steps {
+               git 'https://github.com/SnehaChaursia/DevOpsTest.git'
+           }
+        }
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
