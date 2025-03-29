@@ -5,18 +5,18 @@ pipeline{
     }
     stages {
         stage ('run'){
-            step{
+            steps{
                 sh 'npm install'
             }
         }
         stage ('build'){
-            step{
+            steps{
                 sh 'npm test' 
                  echo "No tests defined"
             }
         }
         stage('run') {
-            step('build'){
+            steps('build'){
                 sh 'npm run build'  
             }
         }
