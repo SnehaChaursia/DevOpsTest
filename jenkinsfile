@@ -1,20 +1,29 @@
-pipeline{
-    agent any 
+pipeline {
+    agent any
+    tools {
+        maven 'maven'  
+    }
     stages {
-        stage ('run'){
-            step{
+        stage('Build') {
+            steps {
+                git 'https://github.com/SnehaChaursia/DevOpsTest.git'
                 sh 'npm install'
+                sh 'npm run build'
             }
         }
-        stage {
-            step{
-                sh 'npm test' 
-                 echo "No tests defined"
+        stage('Test') {
+            steps {
+                sh 'npm test'
             }
         }
-        stage {
-            step('build'){
-                sh 'npm run build'  
+        stage('Run JAR') {
+            steps {
+                script {
+                  
+                    def output = sh(script: 'java -jar target/simple-java-project-1.0-SNAPSHOT.jar', returnStdout: true).trim()
+
+                    echo "Output from JAR: ${output}"
+                }
             }
         }
     }
