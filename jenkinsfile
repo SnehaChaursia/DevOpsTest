@@ -9,13 +9,13 @@ pipeline{
                 sh 'npm install'
             }
         }
-        stage {
+        stage ('build'){
             step{
                 sh 'npm test' 
                  echo "No tests defined"
             }
         }
-        stage {
+        stage('run') {
             step('build'){
                 sh 'npm run build'  
             }
