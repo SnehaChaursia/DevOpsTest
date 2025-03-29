@@ -1,0 +1,21 @@
+pipeline{
+    agent any 
+    stages {
+        stage ('run'){
+            step{
+                sh 'npm install'
+            }
+        }
+        stage {
+            step{
+                sh 'npm test' 
+                 echo "No tests defined"
+            }
+        }
+        stage {
+            step('build'){
+                sh 'npm run build'  
+            }
+        }
+    }
+}
